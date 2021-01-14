@@ -1,4 +1,6 @@
-node_modules
-.vscode
-./client/node_modules
-./client/build
+node_modules/
+.vscode/
+./client/node_modules/
+./client/build/
+TMPInfos.txt
+*.env
