@@ -1,0 +1,7 @@
+.custom-file-label {
+    margin-inline: 15px;
+}
+
+label.col-form-label {
+    top: -4px;
+}

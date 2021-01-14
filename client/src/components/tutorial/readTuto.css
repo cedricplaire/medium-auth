@@ -1,0 +1,47 @@
+.zonetext {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    min-height: 50px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.zonetext-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.zonetext-icon {
+    z-index: 2 !important;
+    text-align: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    margin-top: 7px;
+    margin-left: -20px;
+    border-right: 1px solid black;
+    color: #eee;
+    background-color: blueviolet;
+    border-radius: 5px 0 0 5px;
+    padding-top: 6px;
+}
+
+.zone-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.zi-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: auto;
+}
+

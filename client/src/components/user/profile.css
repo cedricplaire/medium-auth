@@ -1,0 +1,47 @@
+.tab1-right > hr {
+  width: 75%;
+  border: 1px solid rgba(200, 200, 200, 0.1);
+}
+
+.tab1-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.tab1-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+}
+
+.tab1-right {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.tab1-right-infos {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  width: -moz-available; /* For Mozzila */
+  width: -webkit-fill-available; /* For Chrome */
+  width: stretch; /* no prefix */
+  padding-left: 20px;
+  margin-top: 6px;
+}
+
+.list-tutos-profil {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.profil-global-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

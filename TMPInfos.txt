@@ -1,0 +1,1 @@
+mongodb+srv://bebshow:Beb!Mongo!5873!@clustermdb0.tebv8.gcp.mongodb.net/medium-auth?retryWrites=true&w=majority
