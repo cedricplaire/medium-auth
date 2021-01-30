@@ -24,14 +24,15 @@
   justify-content: flex-start;
 }
 
-badge {
-  margin-left: 4px;
-}
-
 .indicator {
   display: inline-flex;
   padding: 4px 10px;
   margin-bottom: 6px;
+}
+
+.admin-card-footer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .admin-users-col2,
@@ -46,6 +47,7 @@ badge {
   width: 100%;
   padding: 2px;
   margin-bottom: 6px;
+  justify-content: space-between;
 }
 
 .admin-user-picture,
@@ -66,4 +68,44 @@ badge {
   flex-direction: column;
   width: fit-content;
   padding-left: 15px;
+}
+
+.admin-usercard-block {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 30%; 
+  padding: 6px;
+  color: #ffffff;
+  background-color: #343a40;
+  align-items: center;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 6px;
+  border-color: #747a90;
+}
+
+.admin-usercard-block::before {
+  position: relative;
+  content: " ";
+  top: -14px;
+  height: 14px;
+  width: 80%;
+}
+
+.aub-success::before {
+  background: rgb(0,0,0);
+  background: linear-gradient(-5deg, rgba(0,0,0,1) 0%, rgb(0, 255, 85) 100%);
+}
+.aub-infos::before {
+  background: rgb(0,0,0);
+  background: linear-gradient(-5deg, rgba(0,0,0,1) 0%, rgb(0, 153, 255) 100%);
+}
+.aub-warning::before {
+  background: rgb(0,0,0);
+  background: linear-gradient(-5deg, rgba(0,0,0,1) 0%, rgb(242, 255, 0) 100%);
+}
+.aub-danger::before {
+  background: rgb(0,0,0);
+  background: linear-gradient(-5deg, rgba(0,0,0,1) 0%, rgb(255, 0, 13) 100%);
 }

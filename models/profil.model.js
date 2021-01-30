@@ -33,7 +33,7 @@ const Profil = mongoose.model(
         type: String,
       },
       postalCode: {
-        type: Number,
+        type: String,
       },
       city: {
         type: String,
@@ -50,6 +50,9 @@ const Profil = mongoose.model(
         type: String,
       },
       facebook: {
+        type: String,
+      },
+      github: {
         type: String,
       },
       linkedin: {

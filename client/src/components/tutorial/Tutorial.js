@@ -3,8 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import moment from 'moment';
 import TutorialDataService from "../../services/tutorial.service";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faCalendar,
+import {
   faCalendarAlt,
   faInfoCircle,
   faFileAlt,
@@ -29,6 +28,8 @@ const Tutorial = (props) => {
     description: "",
     content: "",
     published: false,
+    createdAt: "",
+    updatedAt: "",
     author: null,
   };
   const params = useParams();
@@ -38,9 +39,9 @@ const Tutorial = (props) => {
   const getTutorial = (id) => {
     TutorialDataService.get(id)
       .then((response) => {
-        const {id, title, description, content, published } = response.data;
+        const {id, title, description, content, published, createdAt, updatedAt } = response.data;
         setAuthorTutorial(response.data.author);
-        setCurrentTutorial({id, title, description, content, published});
+        setCurrentTutorial({id, title, description, content, published, createdAt, updatedAt});
         //console.log(response.data);
       })
       .catch((e) => {
@@ -73,10 +74,10 @@ const Tutorial = (props) => {
                       </Badge>
                     </div>
                     <div className="zi-date">
-                      <FontAwesomeIcon icon={faCalendar} className="mr-1" />
+                      <FontAwesomeIcon icon={faCalendarAlt} className="mr-1" />
                       <span className="text-muted mr-1" style={{fontSize: 12}}> Created at </span>
                       <Badge variant="primary">
-                        {moment(currentTutorial.createdAt).format("DD-MMMM-YYYY")}
+                        {moment(currentTutorial.createdAt).format("DD MMM YYYY HH:mm")}
                       </Badge>
                     </div>
                   </div>
@@ -93,7 +94,7 @@ const Tutorial = (props) => {
                       <FontAwesomeIcon icon={faCalendarAlt} className="mr-1" />
                       <span className="text-muted mr-1" style={{fontSize: 12}}> Modified at </span>
                       <Badge variant="primary">
-                        {moment(currentTutorial.modifiedAt).format("DD-MMMM-YYYY")}
+                        {moment(currentTutorial.updatedAt).format("DD MMM YYYY HH:mm")}
                       </Badge>
                     </div>
                   </div>

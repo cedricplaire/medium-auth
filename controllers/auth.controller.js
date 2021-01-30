@@ -26,7 +26,21 @@ exports.signup = (req, res) => {
       public: true,
       avatar: "profil.png",
       lastconnect: Date.now(),
-      owner: newUser._id
+      owner: newUser._id,
+      social: {
+        youtube: "No youtube profile",
+        twitter: "no twitter account",
+        facebook: "https://facebook.com/cedricplaire/",
+        github: "https://github.com/cedricplaire/",
+        linkedin: "no linkedin account",
+        instagram: "no acount",
+      },
+      address: {
+        street: "fill street number and name",
+        postalCode: "75000",
+        city: "ex: Paris",
+        country: "France",
+      },
     });
     userprofil.save(function(error) {
       if (error) {
@@ -108,25 +122,6 @@ exports.signin = (req, res) => {
       }
       const update = { lastconnect: now() };
       let prof = Profil.findOneAndUpdate({_id: user.profil._id}, update, { new: false });
-/*         .exec((err, data) => {
-          if (err) {
-            res.status(500).send({ message: err })
-          }
-          if (!data) {
-            res.status(404).send({
-              message: `Cannot update Profil with id=${id}. Maybe Profil was not found!`
-            });
-          }
-          data.lastconnect = now();
-        }); 
-        data.save(err => {
-        if (err) {
-          res.status(500).send(err);
-          return;
-        }
-      });*/
-      
-      
 
       var token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 172800 // 48 hours
@@ -142,6 +137,7 @@ exports.signin = (req, res) => {
         username: user.username,
         email: user.email,
         roles: authorities,
+        profil: prof._id,
         accessToken: token
       });
     });

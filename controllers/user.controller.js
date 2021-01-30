@@ -7,7 +7,16 @@ const Role = db.role;
 const Tutorial = db.tutorials;
 
 exports.allAccess = (req, res) => {
-  res.status(200).send("Public Content.");
+  //res.status(200).send("Public Content.");
+  Tutorial.find()
+    .sort({createdAt: -1})
+    .limit(2)
+    .exec((err, data) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      return res.status(200).send(data);
+    })
 };
 
 exports.userBoard = (req, res) => {
@@ -88,7 +97,7 @@ exports.getFullUser = (req, res) => {
   User.findById(id)
     .populate("roles", "-__v")
     .populate("tutorials", "title description createdAt updatedAt")
-    .populate("profil", "hobbies bio public avatar lastconnect")
+    .populate("profil", "hobbies bio public avatar lastconnect address social createdAt updatedAt")
     .exec((err, user) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -154,13 +163,7 @@ exports.findByName = (req, res) => {
 };
 
 // Update a User by the id in the request
-exports.updateUser = (req, res, next) => {
-  let imagePath = req.body.imagePath;
-  const url = req.protocol + "://" + req.get("host")
-  if (req.file) {
-      const url = req.protocol + "://" + req.get("host");
-      imagePath = url + "/images/" + req.file.filename
-  }
+exports.updateUser = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!"
@@ -208,17 +211,54 @@ exports.deleteUser = (req, res) => {
     });
 };
 
+exports.addFriend = (req, res) => {
+  const userId = req.userId;
+  const friendId = req.friendId;
+  if (!userId || !friendId) {
+    return res.send({message: `User or friend are not spécified. select User and friend before send page`})
+  }
+  User.findById({_id: userId})
+    .then((err, user) => {
+      if (err) {
+        res.status(500).send(err)
+      }
+      if (!user) {
+        res.status(401).send({message: "User not found in db !"})
+      }
+      User.find({_id: friendId})
+        .then((err, friend) => {
+          if (err) {
+            res.status(500).send(err)
+          }
+          if (!friend) {
+            res.status(500).send({message: "friend not found in db ! Friend must be registered user"})
+          }
+          user.friends.push(friend._id)
+        })
+        user.save((err) => {
+          if (err) {
+            res.status(500).send(err)
+          }
+          res.status(200).send(`Friend:${friend} was correctly added to user:${user} friend list`)
+        })
+    })
+}
+
 exports.addRole = (req, res) => {
   const userId = req.userId;
-  const role = req.role;
-  Role.findOne({name: role})
-    .then(rolefound => {
+  const roleName = req.role;
+  Role.findOne({name: roleName})
+    .then((rolefound) => {
       if (!roleFound) {
         res.send({message: `Role: ${roleFound} was not found in DB !`});
         return
       }
       User.findOne({_id: userId})
         .then(user => {
+          if (!user) {
+            res.send({message: `User: ${user} was not found in DB !`});
+            return
+          }
           user.roles.push(roleFound._id);
           user.save(err => {
             if (err) {
@@ -226,7 +266,7 @@ exports.addRole = (req, res) => {
               return;
             }
   
-            res.send({ message: `User role (${roleFound}) was added successfully!` });
+            res.send({ message: `Role (${roleFound}) was successfully added tu user: ${user}!` });
           });
         })
     })
@@ -244,7 +284,7 @@ exports.countUsers = (req, res) => {
 }
 
 exports.countPublicUsers = (req, res) => {
-  User.countDocuments({public: true})
+  Profil.countDocuments({public: true})
     .then(num => {
       if (!num) {
         res.status(500).send("a error is occured !")

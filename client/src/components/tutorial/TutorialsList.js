@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TutorialDataService from "../../services/tutorial.service";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 import {
   Container,
   Row,
@@ -127,13 +128,13 @@ const TutorialsList = () => {
             <div>
               <label>
                 <strong>Created At</strong>
-              {currentTutorial.createdAt}
+              {moment(currentTutorial.createdAt).format("DD MMM YYYY HH:mm [GMT]")}
               </label>{" "}
             </div>
             <div>
               <label>
                 <strong>Modified At</strong>
-              {currentTutorial.modifiedAt}
+                {moment(currentTutorial.updatedAt).format("DD MMM YYYY HH:mm [GMT]")}
               </label>{" "}
             </div>
             <div>

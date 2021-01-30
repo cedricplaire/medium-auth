@@ -43,9 +43,13 @@ const deleteUser = id => {
   return axios.delete(`${API_URL}/users/${id}/delete`, { headers: authHeader() });
 };
 
-const removeAll = () => {
-  return axios.delete(`${API_URL}/users/delete`, { headers: authHeader() });
-};
+const addRole = (id, data) => {
+  return axios.post(`${API_URL}/users/${id}/role-add`, data, { headers: authHeader() })
+}
+
+const addFriend = (id, data) => {
+  return axios.post(`${API_URL}/users/${id}/friend-add`, data, { headers: authHeader() })
+}
 
 const countUsers = () => {
   return axios.get(`${API_URL}/users/count`, { headers: authHeader() });
@@ -67,7 +71,8 @@ export default {
   getAllUsers,
   updateUser,
   deleteUser,
-  removeAll,
+  addRole,
+  addFriend,
   countUsers,
   countPublicUsers
 };

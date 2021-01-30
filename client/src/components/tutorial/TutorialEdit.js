@@ -7,7 +7,7 @@ import AuthService from "../../services/auth.service";
 
 const TutorialEdit = (props) => {
   const initialTutorialState = {
-    id: null,
+    _id: null,
     title: "",
     description: "",
     content: "",
@@ -23,7 +23,7 @@ const TutorialEdit = (props) => {
     TutorialDataService.get(id)
       .then((response) => {
         setCurrentTutorial(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -46,18 +46,18 @@ const TutorialEdit = (props) => {
 
   const updatePublished = (status) => {
     var data = {
-      id: currentTutorial.id,
+      _id: currentTutorial._id,
       title: currentTutorial.title,
       description: currentTutorial.description,
       content: currentTutorial.content,
       published: status,
-      author: currentTutorial.author,
+      author: currentTutorial.author._id,
     };
 
-    TutorialDataService.update(currentTutorial.id, data)
+    TutorialDataService.update(currentTutorial._id, data)
       .then((response) => {
         setCurrentTutorial({ ...currentTutorial, published: status });
-        console.log(response.data);
+        //console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -65,9 +65,9 @@ const TutorialEdit = (props) => {
   };
 
   const updateTutorial = () => {
-    TutorialDataService.update(currentTutorial.id, currentTutorial)
+    TutorialDataService.update(currentTutorial._id, currentTutorial)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         setMessage("The tutorial was updated successfully!");
       })
       .catch((e) => {
@@ -78,7 +78,7 @@ const TutorialEdit = (props) => {
   const deleteTutorial = () => {
     TutorialDataService.remove(currentTutorial.id)
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         props.history.push("/tutorials");
       })
       .catch((e) => {

@@ -12,6 +12,12 @@ const User = mongoose.model(
         ref: "Role"
       }
     ],
+    friends: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ],
     tutorials: [
       {
         type: mongoose.Schema.Types.ObjectId,

@@ -5,3 +5,12 @@
 label.col-form-label {
     top: -4px;
 }
+
+.accordion {
+    margin-block: 20px;
+}
+
+.card {
+    padding: 0px;
+    margin-block: 0px;
+}

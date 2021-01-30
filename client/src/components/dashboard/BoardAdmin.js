@@ -41,6 +41,10 @@ const BoardAdmin = () => {
   const [tutos, setTutos] = useState([]);
   const [publicProfil, setPublicProfil] = useState(0);
   const { path, url } = useRouteMatch();
+  var F_DATE_RFC2822 = "dddd, DD MMMM YYYY HH:mm:ss";
+  var M_DATE_RFC2822 = "dd, DD MMM YYYY HH:mm";
+  var S_DATE_RFC2822 = "DD MMM YYYY HH:mm";
+
 
   const filterData = (data) => {
     const tmpTutos = [];
@@ -94,45 +98,63 @@ const BoardAdmin = () => {
       </Row>
       <Row>
         <Col xs={12} md={6}>
-          <Card border="secondary" className="p-0">
-            <Card.Header as="h4" className="bg-dark text-light">
-              Users Management
+          <Card border="secondary" className="p-0 mt-1">
+            <Card.Header as="h3" className="bg-dark text-light">
+              Users Statitics
             </Card.Header>
             <Card.Body>
-              <Card.Title>Latest users informations</Card.Title>
-              <div className="admin-card-badges">
-                <div>
-                Registered : <Badge variant="secondary">
-                  {users && users.length}
+              <Card.Title>Connexion informations</Card.Title>
+              <div className="d-inline-flex justify-content-around w-100">
+                <div className="admin-usercard-block aub-infos">
+                  <h6>Registered 
+                  <Badge className="ml-1" variant="light">
+                    {users && users.length}
                   </Badge>
+                  </h6>
                 </div>
-                <div>
-                Public Profils : <Badge variant="secondary">
-                  {publicProfil && publicProfil.length}
+                <div className="admin-usercard-block aub-success">
+                  <h6>
+                  Public
+                  <Badge className="ml-1" variant="light">
+                    {publicProfil && publicProfil.length}
                   </Badge>
+                  </h6>
                 </div>
               </div>
             </Card.Body>
-            <Card.Footer className="bg-dark text-light">
+            <Card.Footer className="bg-dark text-light admin-card-footer">
               <Link to={`${url}/listusers`} className="btn btn-outline-light mr-2">List</Link>
               <Link to={`${url}/edituser`} className="btn btn-outline-light">Edit</Link>
             </Card.Footer>
           </Card>
         </Col>
         <Col xs={12} md={6}>
-          <Card border="secondary" className="p-0">
-            <Card.Header as="h4" className="bg-dark text-light">
-              Posts Management
+          <Card border="secondary" className="p-0 mt-1">
+            <Card.Header as="h3" className="bg-dark text-light">
+              Articles Statistics
             </Card.Header>
             <Card.Body>
               <Card.Title>Latest tutorials informations</Card.Title>
-              <Card.Text>
-                Tutorials: <Badge variant="secondary">
-                  {tutos && tutos.length}
+              <div className="d-inline-flex justify-content-around w-100">
+                <div className="admin-usercard-block aub-warning">
+                  <h6>
+                  Total
+                  <Badge className="ml-1" variant="light">
+                    {tutos && tutos.length}
                   </Badge>
-              </Card.Text>
+                  </h6>
+                </div>
+                <div className="admin-usercard-block aub-danger">
+                  <h6>
+                  Latest
+                  <Badge className="ml-1" variant="light">
+                    {publicProfil && publicProfil.length}
+                  </Badge>
+                  </h6>
+                </div>
+              </div>
             </Card.Body>
-            <Card.Footer className="bg-dark text-light">
+            <Card.Footer className="bg-dark text-light admin-card-footer">
               <Link to={`${url}/listtutos`} className="btn btn-outline-light mr-2">List</Link>
               <Link to={`${url}/edittuto`} className="btn btn-outline-light">Edit</Link>
             </Card.Footer>
@@ -147,15 +169,15 @@ const BoardAdmin = () => {
               <div className="admin-user-picture w-25">
                 <Image alt="picture tutorial" 
                   src={element.profil.avatar ? (
-                    `http://localhost:8000/${element.profil.avatar}`
+                    `/${element.profil.avatar}`
                   ) : (
-                    `http://localhost:8000/profil.png`
+                    `/profil.png`
                   )} />
               </div>}
               <div className="admin-user-descript w-75">
                 <span>{element.username}</span>
-                <span>{moment(element.createdAt).format("LL")}</span>
-                <span>{moment(element.updatedAt).format("LL")}</span> 
+                <span>{moment(element.createdAt).format(M_DATE_RFC2822)}</span>
+                <span>{moment(element.updatedAt).format(F_DATE_RFC2822)}</span> 
               </div>
             </div>
           ))}
@@ -166,15 +188,15 @@ const BoardAdmin = () => {
               <div className="admin-tuto-picture w-25">
                 <Image alt="picture tutorial" 
                   src={tuto.picture ? (
-                    `http://localhost:8000/${tuto.picture}`
+                    `/${tuto.picture}`
                   ) : (
-                    `http://localhost:8000/picture.png`
+                    `/picture.png`
                   )} />
               </div>
               <div className="admin-tuto-descript w-75">
                 <span>{tuto.title}</span>
-                <span>{moment(tuto.createdAt).format("LL")}</span>
-                <span>{moment(tuto.updatedAt).format("LL")}</span> 
+                <span>{moment(tuto.createdAt).format(S_DATE_RFC2822)}</span>
+                <span>{moment(tuto.updatedAt).format(S_DATE_RFC2822)}</span> 
               </div>
             </div>
           ))}

@@ -53,6 +53,7 @@ $black:    #000 !default; */
     min-width: 180px;
     max-width: 180px;
     color: #e9ecef;
+    border-right: 1px solid #333333;
     background-color: rgba(52, 58, 64, 0.75);
     min-height: 100vh;
     
@@ -85,10 +86,33 @@ $black:    #000 !default; */
     margin-right: 0px;
 }
 
-.side-bar > .toogle-nav {
-    max-width: inherit;
-    padding: 0;
+.side-bar.expanded .toggle-nav > svg {
+    margin-left: 0px;
+    margin-bottom: 8px;
+}
+
+.side-bar > .toggle-nav {
+    display: block;
+    text-align: center;
     color: white;
+    cursor: pointer;
+}
+.toggle-nav > svg {
+    margin-left: 10px;
+}
+
+.side-bar > .sidebar-avatar {
+    display: block;
+    max-width: auto;
+    text-align: center;
+    align-items: center;
+}
+.side-bar.expanded > .sidebar-avatar {
+    display: none;
+}
+
+.side-bar > .sidebar-avatar > img {
+    max-width: 100px;
 }
 
 .side-bar button.nav-link > svg {

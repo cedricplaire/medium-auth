@@ -29,6 +29,9 @@ module.exports = function(app) {
   // get one user by id
   app.get('/api/users/:id', [authJwt.verifyToken], controller.getUser);
 
+  // get one user by name
+  app.get('/api/users/name/:id', [authJwt.verifyToken], controller.findByName);
+
   // get one full user by id
   app.get('/api/user-full/:id', [authJwt.verifyToken], controller.getFullUser);
 
@@ -41,6 +44,16 @@ module.exports = function(app) {
   // Delete user (Admin role required)
   app.delete('/api/users/:id/delete', [authJwt.verifyToken, authJwt.isAdmin], 
     controller.deleteUser
+  );
+
+  // Add role to user (Admin role required)
+  app.put('/api/users/:id/role-add', [authJwt.verifyToken, authJwt.isAdmin], 
+    controller.addRole
+  );
+
+  // Add friend to user (Logged in required)
+  app.put('/api/users/:id/role-add', [authJwt.verifyToken], 
+    controller.addFriend
   );
 
   app.get('api/users/count', [authJwt.verifyToken], controller.countUsers);

@@ -1,3 +1,7 @@
+.profil-tabcontent {
+  margin-left: 2px;
+}
+
 .tab1-right > hr {
   width: 75%;
   border: 1px solid rgba(200, 200, 200, 0.1);
@@ -7,6 +11,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  padding-right: 4px;
 }
 
 .tab1-left {
@@ -14,6 +19,7 @@
   flex-direction: column;
   width: 40%;
   align-items: center;
+  margin-right: 4px;
 }
 
 .tab1-right {
@@ -39,9 +45,50 @@
   justify-content: space-between;
 }
 
+.list-address-profil {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profil-address {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 1.5;
+  padding: 0.75em 1.25em;
+  background-color: lightgrey;
+  padding-inline: 4px;
+}
+
 .profil-global-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+ .card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 }

@@ -10,7 +10,8 @@
 .zonetext-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
+    min-height: 52px;
     width: 100%;
     margin-left: 10px;
 }

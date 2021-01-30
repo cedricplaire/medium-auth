@@ -11,6 +11,7 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Sidebar.css";
+import { Image } from "react-bootstrap";
 
 const SideBar = ({
   vertical,
@@ -45,17 +46,20 @@ const SideBar = ({
   return (
     <>
       <nav {...attrs} className={classes}>
-        <li className="nav-item toogle-nav">
-          <button
-            onClick={toggleExpanded}
-            className="nav-link btn btn-block btn-outline-light"
-          >
-            <FontAwesomeIcon icon={faBars} />
-            {!expanded && "Close"}
-          </button>
-        </li>
-
-        <hr />
+        <div
+          onClick={toggleExpanded}
+          className="toggle-nav my-2"
+        >
+          {!expanded && "Close"}
+          <FontAwesomeIcon icon={faBars} size="lg"/>
+        </div>
+        <div className="sidebar-avatar">
+          <Image
+            src={`/logo192.png`}
+            alt="user sidebar avatar"
+            className="mx-auto"
+          />
+        </div>
         <NavLink to="/userslist" className="nav-link">
           <FontAwesomeIcon icon={faUsers} />
           {!expanded && "Users List"}
