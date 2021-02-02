@@ -253,22 +253,27 @@ const ProfilEdit = (props) => {
                       <label className="custom-file-label" htmlFor="file"></label>
                     </Col>
                   </Form.Group>
-                  <Col sm={4} md={3}>
-                    <span>Avatar preview</span>
-                  </Col>
-                  <Col sm={8} md={9}>
-                    <Image
-                      src={`http://localhost:8000/${currentProfil.avatar}`}
-                      alt="user avatar"
-                      roundedCircle
-                    />
-                  </Col>
+                  <Form.Row>
+                    <Col sm={6}>
+                      <Form.Label htmlFor="profilimg">
+                        <span>Preview : </span>
+                      </Form.Label>
+                    </Col>
+                    <Col sm={6}>
+                      <Image
+                        src={`/${currentProfil.avatar}`}
+                        alt="user avatar"
+                        name="profilimg"
+                        roundedCircle
+                      />
+                    </Col>
+                  </Form.Row>
                 </Form>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
-          <SocialEdit social={currentProfil.social} onChange={handleSocialChange} />
-          <AddressEdit address={currentProfil.address} onChange={handleAddressChange} />
+          <SocialEdit socialProps={currentProfil.social} onChange={handleSocialChange} />
+          <AddressEdit addressProps={currentProfil.address} onChange={handleAddressChange} />
         </Accordion>
         <Col sm={12} md={10}>
           {message ? (

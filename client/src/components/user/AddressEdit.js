@@ -2,13 +2,14 @@ import React from "react";
 import { Accordion, Card, Form, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGolfBall,
+  faRoad,
   faCity,
   faFlag,
   faMailBulk,
 } from "@fortawesome/free-solid-svg-icons";
 
-function AddressEdit({ address, onChange }) {
+function AddressEdit({ addressProps }, onChange ) {
+  const { street, postalCode, city, country } = addressProps;
   return (
     <Card className="p-0">
       <Card.Header>
@@ -21,14 +22,14 @@ function AddressEdit({ address, onChange }) {
           <Form>
             <Form.Group as={Row}>
               <Form.Label column sm={3} htmlFor="street">
-                <FontAwesomeIcon icon={faGolfBall} /> Street
+                <FontAwesomeIcon icon={faRoad} /> Street
               </Form.Label>
               <Col sm={9}>
                 <Form.Control
                   type="text"
                   id="street"
                   required
-                  value={address.street}
+                  value={street}
                   onChange={onChange}
                   name="street"
                 />
@@ -44,7 +45,7 @@ function AddressEdit({ address, onChange }) {
                   type="text"
                   id="postalcode"
                   required
-                  value={address.postalCode}
+                  value={postalCode}
                   onChange={onChange}
                   name="postalcode"
                 />
@@ -60,7 +61,7 @@ function AddressEdit({ address, onChange }) {
                   type="text"
                   id="city"
                   required
-                  value={address.city}
+                  value={city}
                   onChange={onChange}
                   name="city"
                 />
@@ -76,7 +77,7 @@ function AddressEdit({ address, onChange }) {
                   type="text"
                   id="country"
                   required
-                  value={address.country}
+                  value={country}
                   onChange={onChange}
                   name="country"
                 />

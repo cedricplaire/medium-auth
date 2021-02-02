@@ -10,7 +10,8 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
-function SocialEdit({ social, onChange }) {
+function SocialEdit( {socialProps}, onChange ) {
+  const { youtube, twitter, facebook, github, linkedin, instagram } = socialProps;
   return (
     <Card>
       <Card.Header>
@@ -30,7 +31,7 @@ function SocialEdit({ social, onChange }) {
                   type="text"
                   id="youtube"
                   required
-                  value={social.youtube}
+                  value={youtube}
                   onChange={onChange}
                   name="youtube"
                 />
@@ -46,7 +47,7 @@ function SocialEdit({ social, onChange }) {
                   type="text"
                   id="twitter"
                   required
-                  value={social.twitter}
+                  value={twitter}
                   onChange={onChange}
                   name="twitter"
                 />
@@ -62,7 +63,7 @@ function SocialEdit({ social, onChange }) {
                   type="text"
                   id="facebook"
                   required
-                  value={social.facebook}
+                  value={facebook}
                   onChange={onChange}
                   name="facebook"
                 />
@@ -78,7 +79,7 @@ function SocialEdit({ social, onChange }) {
                   type="text"
                   id="github"
                   required
-                  value={social.github}
+                  value={github}
                   onChange={onChange}
                   name="github"
                 />
@@ -94,7 +95,7 @@ function SocialEdit({ social, onChange }) {
                   type="text"
                   id="linkedin"
                   required
-                  value={social.linkedin}
+                  value={linkedin}
                   onChange={onChange}
                   name="linkedin"
                 />
@@ -109,7 +110,7 @@ function SocialEdit({ social, onChange }) {
                   type="text"
                   id="instagram"
                   required
-                  value={social.instagram}
+                  value={instagram}
                   onChange={onChange}
                   name="instagram"
                 />

@@ -163,7 +163,7 @@ const Profile = () => {
                         <strong className="text-secondary mr-1">
                           Last visit :
                         </strong>
-                        {moment.utc(profile.profil.lastconnect).format("DD-MMMM-YYYY HH:mm")}
+                        {moment(profile.profil.lastconnect).format("DD MMMM YYYY HH:mm")}
                       </p>
                       <p>
                         <strong className="text-secondary mr-1">
@@ -178,63 +178,61 @@ const Profile = () => {
               </Tab.Pane>
               <Tab.Pane eventKey="#link2">
                 <div className="tab1-wrapper">
-                  
                   <div className="tab1-left">
                     <h5 className="text-center">Postal Address :</h5>
-
                       <div className="list-address-profil">
                         {profile.profil.address.street &&
                           <span className="profil-address">
-                            Street <FontAwesomeIcon icon={faRoad} />{` : ${profile.profil.address.street}`}
+                            <FontAwesomeIcon icon={faRoad} />{` : ${profile.profil.address.street}`}
                           </span>
                         }
                         {profile.profil.address.postalCode &&
                           <span className="profil-address">
-                            Postal Code <FontAwesomeIcon icon={faMailBulk} />{` : ${profile.profil.address.postalCode}`}
+                            <FontAwesomeIcon icon={faMailBulk} />{` : ${profile.profil.address.postalCode}`}
                           </span>
                         }
                         {profile.profil.address.city &&
                           <span className="profil-address">
-                            City <FontAwesomeIcon icon={faCity} />{` : ${profile.profil.address.city}`}
+                            <FontAwesomeIcon icon={faCity} />{` : ${profile.profil.address.city}`}
                           </span>
                         }
                         {profile.profil.address.country &&
                           <span className="profil-address">
-                            Country <FontAwesomeIcon icon={faFlag} />{` : ${profile.profil.address.country}`}
+                            <FontAwesomeIcon icon={faFlag} />{` : ${profile.profil.address.country}`}
                           </span>
                         }
                       </div>
                   </div>
                   <div className="tab1-right">
-                  <h5 className="text-center">Socials Links :</h5>
+                    <h5 className="text-center">Socials Links :</h5>
                     <ListGroup>
                       {profile.profil.social.youtube && 
-                        <ListGroup.Item>
+                        <ListGroup.Item key="social1">
                           <FontAwesomeIcon icon={faYoutube} />{`: ${profile.profil.social.youtube}`}
                         </ListGroup.Item>
                       }
                       {profile.profil.social.twitter && 
-                        <ListGroup.Item>
+                        <ListGroup.Item key="social2">
                           <FontAwesomeIcon icon={faTwitter} />{`: ${profile.profil.social.twitter}`}
                         </ListGroup.Item>
                       }
                       {profile.profil.social.facebook && 
-                        <ListGroup.Item>
+                        <ListGroup.Item key="social3">
                           <FontAwesomeIcon icon={faFacebook} />{`: ${profile.profil.social.facebook}`}
                         </ListGroup.Item>
                       }
                       {profile.profil.social.github && 
-                        <ListGroup.Item>
+                        <ListGroup.Item key="social4">
                           <FontAwesomeIcon icon={faGithub} />{`: ${profile.profil.social.github}`}
                         </ListGroup.Item>
                       }
                       {profile.profil.social.linkedin && 
-                        <ListGroup.Item>
+                        <ListGroup.Item key="social5">
                           <FontAwesomeIcon icon={faLinkedin} />{`: ${profile.profil.social.linkedin}`}
                         </ListGroup.Item>
                       }
                       {profile.profil.social.instagram && 
-                        <ListGroup.Item>
+                        <ListGroup.Item key="social6">
                           <FontAwesomeIcon icon={faInstagram} />{`: ${profile.profil.social.instagram}`}
                         </ListGroup.Item>
                       }
