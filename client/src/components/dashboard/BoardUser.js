@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import UserService from "../../services/user.service";
+import Timeline from '../timeline/Timeline';
 
 const BoardUser = () => {
   const [content, setContent] = useState("");
@@ -29,6 +30,9 @@ const BoardUser = () => {
       <h1>Welcome to the User section</h1>
         <h3>{content}</h3>
       </header>
+      <div>
+        <Timeline />
+      </div>
     </div>
   );
 };
