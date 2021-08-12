@@ -4,3 +4,4 @@ node_modules/
 ./client/build/
 ./client/.env
 TMPInfos.txt
+.env
